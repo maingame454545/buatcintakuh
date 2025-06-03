@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aku Cinta Kamu 💖</title>
   <style>
     body {
-      background: linear-gradient(to top right, #ffc3a0, #ffafbd);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #ffdde1, #ee9ca7);
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
       text-align: center;
-      padding-top: 100px;
-      color: #fff;
+      color: #ff1493;
     }
 
     h1 {
+      margin-top: 80px;
       font-size: 2.5em;
     }
 
     .btn {
-      padding: 15px 30px;
+      padding: 15px 35px;
       font-size: 1.2em;
       margin: 20px;
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .yes-btn {
@@ -40,15 +43,70 @@
 
     .message {
       display: none;
-      margin-top: 50px;
-      font-size: 1.5em;
-      background: rgba(255,255,255,0.9);
-      color: #ff1493;
-      padding: 20px;
-      border-radius: 20px;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 1.3em;
+      max-width: 500px;
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      color: #d63384;
+      margin: 30px auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .cat {
+      width: 150px;
+      margin-top: 20px;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .heart {
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -7.5px;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        opacity: 1;
+      }
+      100% {
+        top: 110%;
+        opacity: 0;
+      }
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
@@ -60,21 +118,39 @@
   <button class="btn no-btn" id="noBtn" onmouseover="moveButton()">Tidak ❌</button>
 
   <div class="message" id="message">
-    🥰 Aku juga cinta kamu! Terima kasih sudah jadi bagian dari hidupku 💕
+    🥰 Aku juga cinta kamu! Terima kasih karena selalu ada untukku.<br><br>
+    Kamu adalah alasan senyumku setiap hari 💕<br><br>
+    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" class="cat" alt="kucing manis" />
   </div>
 
+  <!-- Musik romantis -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Animasi love jatuh -->
   <script>
     function showMessage() {
-      document.getElementById('message').style.display = 'block';
+      document.getElementById("message").style.display = "block";
     }
 
     function moveButton() {
       const btn = document.getElementById('noBtn');
-      const x = Math.random() * window.innerWidth * 0.6;
-      const y = Math.random() * window.innerHeight * 0.6;
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
       btn.style.position = 'absolute';
       btn.style.left = x + 'px';
       btn.style.top = y + 'px';
+    }
+
+    // Hearts falling
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      heart.style.width = heart.style.height = (Math.random() * 15 + 10) + 'px';
+      document.body.appendChild(heart);
     }
   </script>
 
