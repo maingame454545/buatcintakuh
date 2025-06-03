@@ -3,106 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Untuk Kamu, Cintaku 💖</title>
+  <title>Surat untuk Kamu 💖</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to top right, #ffafbd, #ffc3a0);
-      font-family: 'Courier New', Courier, monospace;
-      color: white;
+      background: linear-gradient(120deg, #ffc3a0, #ffafbd);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      overflow: hidden;
+      color: #fff;
     }
 
     h1 {
-      margin-top: 50px;
+      margin-top: 40px;
       font-size: 2.5em;
     }
 
-    p {
+    .umpoo-btn {
+      background-color: #fff;
+      color: #ff69b4;
+      border: none;
+      padding: 15px 30px;
       font-size: 1.5em;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .umpoo-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .surat {
+      display: none;
+      margin: 30px auto;
       max-width: 600px;
-      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.95);
+      color: #ff1493;
+      padding: 25px;
+      border-radius: 20px;
+      font-size: 1.2em;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease forwards;
     }
 
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: fall 5s linear infinite;
-      opacity: 0.8;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .heart::before, .heart::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
+    .cat {
+      margin-top: 20px;
+      width: 150px;
+      animation: float 3s ease-in-out infinite;
     }
 
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-
-    @keyframes fall {
-      0% {
-        top: -10%;
-        left: calc(100% * var(--i));
-        opacity: 1;
-        transform: rotate(0deg) scale(1);
-      }
-      100% {
-        top: 110%;
-        left: calc(100% * var(--i) + 10px);
-        opacity: 0;
-        transform: rotate(360deg) scale(0.5);
-      }
-    }
-
-    .music {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
   </style>
 </head>
 <body>
-  <h1>Untuk Cintaku 💖</h1>
-  <p>
-    Aku cuma mau bilang...<br>
-    Kamu adalah alasan aku tersenyum setiap hari.<br>
-    Terima kasih sudah menjadi bagian dari hidupku. Aku sayang kamu 💕
-  </p>
 
-  <!-- Music (optional) -->
-  <div class="music">
-    <audio controls autoplay loop>
-      <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-      Browser kamu tidak mendukung audio.
-    </audio>
+  <h1>Hai Cintaku 💖</h1>
+  <button class="umpoo-btn" onclick="bukaSurat()">UMPOO 💌</button>
+
+  <div id="surat" class="surat">
+    <p>
+      Hai kamu yang selalu ada di hatiku...<br><br>
+      Aku cuma ingin bilang, kamu adalah hal terbaik yang pernah hadir dalam hidupku.
+      Terima kasih sudah jadi pelangi di hari-hariku. Aku sayang kamu! 💕<br><br>
+      Selalu bersamaku ya?
+    </p>
+    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kucing lucu" class="cat" />
   </div>
 
-  <!-- Falling hearts -->
   <script>
-    for (let i = 0; i < 30; i++) {
-      let heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.setProperty('--i', Math.random());
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 5 + 3) + "s";
-      document.body.appendChild(heart);
+    function bukaSurat() {
+      const surat = document.getElementById('surat');
+      surat.style.display = 'block';
     }
   </script>
+
 </body>
 </html>
